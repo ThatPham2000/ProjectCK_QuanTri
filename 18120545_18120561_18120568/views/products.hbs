@@ -1,1 +1,52 @@
-<h1>Product</h1>
+<section>
+    <a href="#" class="btn btn-default text-success add">
+        <i class="fa fa-plus" aria-hidden="true"></i>
+        Add a new products
+    </a>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9 padding-right">
+                <div class="features_items">
+                    <!--features_items-->
+                    <h2 class="title text-center">Features Items</h2>
+                    {{#each shop}}
+                    <div class="col-sm-4">
+                        <div class="product-image-wrapper">
+                            <div class="single-products">
+                                <div class="productinfo text-center">
+                                    <img src="{{avt}}" alt="" />
+                                    <h2>{{basePrice}}</h2>
+                                    <p>{{name}}</p>
+
+
+                                    <a href="#" class="btn btn-default text-primary add-to-cart"><i
+                                            class="fa fa-search-minus"></i>Detail</a>
+
+                                    <a href="#" class="btn btn-default text-primary add-to-cart ">
+                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                        Delete
+                                    </a>
+
+                                    <a href="#" class="btn btn-default text-primary add-to-cart ">
+                                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                                        Edit
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+
+
+                </div>
+                <!--features_items-->
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</section>
