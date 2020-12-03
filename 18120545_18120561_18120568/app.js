@@ -13,7 +13,7 @@ const productsRouter = require('./routes/products');
 
 var app = express();
 
-require('./dal/db');
+require('./dal/db')();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

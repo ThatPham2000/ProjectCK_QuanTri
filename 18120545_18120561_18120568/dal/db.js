@@ -1,25 +1,17 @@
-//1.require mongoose
 const mongoose = require('mongoose');
 
-//2. connect
-const connection = mongoose.connect('mongodb://localhost/webshopping');
+const URL = "mongodb+srv://web2k:web2k@cluster0.zur00.mongodb.net/webshopping?retryWrites=true&w=majority";
+const connectDB = async () => {
+    try {
+        await mongoose.connect(URL, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+        });
 
-//3. Tạo Schema
-const cameraSchema = new mongoose.Schema({
-    pathImages: String,
-    title: String,
-    description: String,
-    price: Number,
-    thuong_hieu: String,
-    bao_hanh: String,
-    loai_san_pham: String
-});
+        await console.log('DB connected!');
+    } catch (err) {
+        console.log(err.message);
+    }
+}
 
-//4. Tạo model
-const Camera = mongoose.model('Camera', cameraSchema);
-//5. CRUD
-Camera.find().exec((err, cameras) => {
-    console.log(cameras);
-});
-
-module.exports = connection;
+module.exports = connectDB;

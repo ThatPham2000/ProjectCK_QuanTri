@@ -1,52 +1,61 @@
-<section>
-    <a href="#" class="btn btn-default text-success add">
-        <i class="fa fa-plus" aria-hidden="true"></i>
-        Add a new products
-    </a>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-9 padding-right">
-                <div class="features_items">
-                    <!--features_items-->
-                    <h2 class="title text-center">Features Items</h2>
-                    {{#each shop}}
-                    <div class="col-sm-4">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="{{avt}}" alt="" />
-                                    <h2>{{basePrice}}</h2>
-                                    <p>{{name}}</p>
-
-
-                                    <a href="#" class="btn btn-default text-primary add-to-cart"><i
-                                            class="fa fa-search-minus"></i>Detail</a>
-
+<div class="container-fluid">
+    <!-- ============================================================== -->
+    <!-- Start Page Content -->
+    <!-- ============================================================== -->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="white-box">
+                <h3 class="box-title">List of Products</h3>
+                <p class="text-muted">Add class <code>.table</code></p>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="border-top-0">#</th>
+                                <th class="border-top-0">Title</th>
+                                <th class="border-top-0">Description</th>
+                                <th class="border-top-0">Price</th>
+                                <th class="border-top-0">Sold_Quantity</th>
+                                <th class="border-top-0">Edit</th>
+                                <th class="border-top-0">Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each products}}
+                            <tr>
+                                <td>{{@index}}</td>
+                                <td>
+                                    <a href="#">{{title}}</a>
+                                </td>
+                                <td>{{description}}</td>
+                                <td>{{price}}</td>
+                                <td>{{soldQuantity}}</td>
+                                <td>
                                     <a href="#" class="btn btn-default text-primary add-to-cart ">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#" class="btn btn-default text-danger add-to-cart ">
                                         <i class="fa fa-trash" aria-hidden="true"></i>
-                                        Delete
                                     </a>
-
-                                    <a href="#" class="btn btn-default text-primary add-to-cart ">
-                                        <i class="fas fa-edit    "></i>
-                                        Edit
-                                    </a>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {{/each}}
-
-
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
                 </div>
-                <!--features_items-->
-
-
-
-
-
             </div>
         </div>
     </div>
-</section>
+    <!-- ============================================================== -->
+    <!-- End PAge Content -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Right sidebar -->
+    <!-- ============================================================== -->
+    <!-- .right-sidebar -->
+    <!-- ============================================================== -->
+    <!-- End Right sidebar -->
+    <!-- ============================================================== -->
+</div>

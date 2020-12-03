@@ -1,8 +1,8 @@
-const productModel = require('../models/productModel');
+const productServices = require('../models/productServices');
 
-exports.index = (req, res, next) => {
+module.exports.index = async (req, res, next) => {
     // Get books from model
-    const shop = productModel.list();
+    const products = await productServices.listAllProduct();
     // Pass data to view to display list of books
-    res.render('products', {title: 'Products', subtitle: 'List product', shop});
+    res.render('products', {title: 'Products', subtitle: 'List product', products});
 };
