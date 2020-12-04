@@ -10,4 +10,7 @@ const productController = require('../controllers/product.Controller');
 router.get('/', productController.index);
 router.get('/edit/:id', productController.edit);
 router.post('/edit/:id', productController.postEdit);
+
+
+router.get('/delete/:id', productController.postEdit);
 module.exports = router;

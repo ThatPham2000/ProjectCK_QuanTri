@@ -11,7 +11,7 @@ module.exports.findProductbyID = async(id) => {
     return await productModel.findById(id);
 }
 
-module.exports.editProductbyId = async (id, newProduct, callback) => {
+module.exports.editProductbyId = async (id, newProduct) => {
 
     
     productModel.findById(id)
@@ -25,4 +25,13 @@ module.exports.editProductbyId = async (id, newProduct, callback) => {
         products.save();
     })
     
+}
+
+
+module.exports.removebyId = async (id) =>{
+
+    productModel.findById(id)
+    .remove()
+    .exec();
+
 }

@@ -31,12 +31,14 @@ module.exports.postEdit = async (req, res)=>{
     
     await productServices.editProductbyId(id, req.body);
     
-    var data = await productServices.findProductbyID(id);
-    res.render('edit', {
-        _id : data._id,
-        title : data.title, 
-        description: data.description, 
-        price: data.price
-    });
+    res.redirect('/products');
+}
+
+module.exports.remove = async (req, res) =>{
+
+    const id = req.params.id;
+    
+    await productServices.removebyId(id);
+
 }
 
