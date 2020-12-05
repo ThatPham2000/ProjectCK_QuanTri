@@ -17,7 +17,7 @@ module.exports.edit = async(req, res)  =>{
     
     res.render('edit', {
         _id : data._id,
-        title : data.title, 
+        name : data.name, 
         description: data.description, 
         price: data.price
     });

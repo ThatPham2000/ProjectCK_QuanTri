@@ -12,7 +12,7 @@
                         <thead>
                             <tr>
                                 <th class="border-top-0">#</th>
-                                <th class="border-top-0">Title</th>
+                                <th class="border-top-0">Name</th>
                                 <th class="border-top-0">Description</th>
                                 <th class="border-top-0">Price</th>
                                 <th class="border-top-0">Sold_Quantity</th>
@@ -25,11 +25,11 @@
                             <tr>
                                 <td>{{@index}}</td>
                                 <td>
-                                    <a href="#">{{title}}</a>
+                                    <a href="#">{{name}}</a>
                                 </td>
                                 <td>{{description}}</td>
                                 <td>{{price}}</td>
-                                <td>{{soldQuantity}}</td>
+                                <td>{{countSale}}</td>
                                 <td>
                                     <a href="/products/edit/{{_id}}" class="btn btn-default text-primary add-to-cart ">
                                         <i class="fas fa-edit"></i>
