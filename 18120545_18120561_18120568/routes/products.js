@@ -7,7 +7,7 @@ const productController = require('../controllers/product.Controller');
 //   res.render('products', {title: 'Products', subtitle: 'List product'});
 // });
 
-router.get('/', productController.index);
+router.get('/', productController.listProductPagination);
 router.get('/edit/:id', productController.edit);
 router.post('/edit/:id', productController.postEdit);
 

@@ -6,32 +6,36 @@ module.exports.listAllProduct = async() => {
 
 
 module.exports.findProductbyID = async(id) => {
-
-
     return await productModel.findById(id);
 }
 
-module.exports.editProductbyId = async (id, newProduct) => {
-
-    
+module.exports.editProductbyId = async(id, newProduct) => {
     productModel.findById(id)
-    .then(products => {
-        
-        products.title = newProduct.title;
-        products.description = newProduct.description;
-        products.price =  newProduct.price;
-          
+        .then(products => {
 
-        products.save();
-    })
-    
+            products.title = newProduct.title;
+            products.description = newProduct.description;
+            products.price = newProduct.price;
+
+
+            products.save();
+        })
+
 }
 
 
-module.exports.removebyId = async (id) =>{
+module.exports.removebyId = async(id) => {
 
     productModel.findById(id)
-    .remove()
-    .exec();
+        .remove()
+        .exec();
 
 }
+
+module.exports.listProductPagination = async(currentPage, productsPerPage) => {
+    let list = await productModel.paginate({}, {
+        page: currentPage,
+        limit: productsPerPage
+    });
+    return list;
+};
