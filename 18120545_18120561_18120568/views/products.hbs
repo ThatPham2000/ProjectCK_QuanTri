@@ -7,6 +7,14 @@
             <div class="white-box">
                 <div class="d-flex justify-content-between">
                     <h3 class="box-title">List of Products</h3>
+                    <div>
+                        <form action="#" method="get">
+                            <input type="text" name="name" placeholder="Search">
+                            <button type="submit">
+                                <i class="fa fa-search text-primary" aria-hidden="true"></i>
+                            </button>
+                        </form>
+                    </div>
                     <div class="d-flex justify-content-center">
                         <h3 class="box-title">Filter:&nbsp;</h3>
                         <div class="btn-group">
@@ -24,11 +32,13 @@
                                 <a class="dropdown-item" href="/products?category=laptop">Laptop</a>
                                 <a class="dropdown-item" href="/products?category=mobile">Mobile</a>
                                 <a class="dropdown-item" href="/products?category=Components">Components</a>
-                                <a class="dropdown-item" href="/products?category=Network equipment - Security">Network equipment - Security</a>
+                                <a class="dropdown-item" href="/products?category=Network equipment - Security">Network
+                                    equipment - Security</a>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
@@ -69,25 +79,25 @@
                     <div class="pagination">
                         {{#if hasPrevPage}}
                         {{#if Category}}
-                            <a href="/products?category={{Category}}&page={{prevPage}}">&laquo;</a>
+                        <a href="/products?category={{Category}}&page={{prevPage}}">&laquo;</a>
                         {{else}}
-                            <a href="/products?page={{prevPage}}">&laquo;</a>
+                        <a href="/products?page={{prevPage}}">&laquo;</a>
                         {{/if}}
                         {{/if}}
 
                         {{#if hasPrevPage1}}
                         {{#if Category}}
-                            <a href="/products?category={{Category}}&page={{prevPage1}}">{{prevPage1}}</a>
+                        <a href="/products?category={{Category}}&page={{prevPage1}}">{{prevPage1}}</a>
                         {{else}}
-                            <a href="/products?page={{prevPage1}}">{{prevPage1}}</a>
+                        <a href="/products?page={{prevPage1}}">{{prevPage1}}</a>
                         {{/if}}
                         {{/if}}
 
                         {{#if hasPrevPage2}}
                         {{#if Category}}
-                            <a href="/products?category={{Category}}&page={{prevPage2}}">{{prevPage2}}</a>
+                        <a href="/products?category={{Category}}&page={{prevPage2}}">{{prevPage2}}</a>
                         {{else}}
-                            <a href="/products?page={{prevPage2}}">{{prevPage2}}</a>
+                        <a href="/products?page={{prevPage2}}">{{prevPage2}}</a>
                         {{/if}}
                         {{/if}}
 
@@ -95,25 +105,25 @@
 
                         {{#if hasNextPage1}}
                         {{#if Category}}
-                            <a href="/products?category={{Category}}&page={{nextPage1}}">{{nextPage1}}</a>
+                        <a href="/products?category={{Category}}&page={{nextPage1}}">{{nextPage1}}</a>
                         {{else}}
-                            <a href="/products?page={{nextPage1}}">{{nextPage1}}</a>
+                        <a href="/products?page={{nextPage1}}">{{nextPage1}}</a>
                         {{/if}}
                         {{/if}}
 
                         {{#if hasNextPage2}}
                         {{#if Category}}
-                            <a href="/products?category={{Category}}&page={{nextPage2}}">{{nextPage2}}</a>
+                        <a href="/products?category={{Category}}&page={{nextPage2}}">{{nextPage2}}</a>
                         {{else}}
-                            <a href="/products?page={{nextPage2}}">{{nextPage2}}</a>
+                        <a href="/products?page={{nextPage2}}">{{nextPage2}}</a>
                         {{/if}}
                         {{/if}}
 
                         {{#if hasNextPage}}
                         {{#if Category}}
-                            <a href="/products?category={{Category}}&page={{nextPage}}">&raquo;</a>
+                        <a href="/products?category={{Category}}&page={{nextPage}}">&raquo;</a>
                         {{else}}
-                            <a href="/products?page={{nextPage}}">&raquo;</a>
+                        <a href="/products?page={{nextPage}}">&raquo;</a>
                         {{/if}}
                         {{/if}}
                     </div>
