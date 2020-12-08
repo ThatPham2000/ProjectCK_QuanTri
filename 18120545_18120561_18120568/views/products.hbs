@@ -16,11 +16,11 @@
                                 <span class="sr-only">Toggle Dropdown</span>
                             </button>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="/products?page={{currentPage}}&category=PC">PC</a>
-                                <a class="dropdown-item" href="/products?page={{currentPage}}&category=laptop">Laptop</a>
-                                <a class="dropdown-item" href="/products?page={{currentPage}}&category=mobile">Mobile</a>
-                                <a class="dropdown-item" href="/products?page={{currentPage}}&category=Components">Components</a>
-                                <a class="dropdown-item" href="/products?page={{currentPage}}&category=Network equipment - Security">Network equipment - Security</a>
+                                <a class="dropdown-item" href="/products?category=PC">PC</a>
+                                <a class="dropdown-item" href="/products?category=laptop">Laptop</a>
+                                <a class="dropdown-item" href="/products?category=mobile">Mobile</a>
+                                <a class="dropdown-item" href="/products?category=Components">Components</a>
+                                <a class="dropdown-item" href="/products?category=Network equipment - Security">Network equipment - Security</a>
                             </div>
                         </div>
                     </div>
@@ -64,23 +64,53 @@
                     </table>
                     <div class="pagination">
                         {{#if hasPrevPage}}
-                        <a href="/products?page={{prevPage}}">&laquo;</a>
+                        {{#if Category}}
+                            <a href="/products?category={{Category}}&page={{prevPage}}">&laquo;</a>
+                        {{else}}
+                            <a href="/products?page={{prevPage}}">&laquo;</a>
                         {{/if}}
+                        {{/if}}
+
                         {{#if hasPrevPage1}}
-                        <a href="/products?page={{prevPage1}}">{{prevPage1}}</a>
+                        {{#if Category}}
+                            <a href="/products?category={{Category}}&page={{prevPage1}}">{{prevPage1}}</a>
+                        {{else}}
+                            <a href="/products?page={{prevPage1}}">{{prevPage1}}</a>
                         {{/if}}
+                        {{/if}}
+
                         {{#if hasPrevPage2}}
-                        <a href="/products?page={{prevPage2}}">{{prevPage2}}</a>
+                        {{#if Category}}
+                            <a href="/products?category={{Category}}&page={{prevPage2}}">{{prevPage2}}</a>
+                        {{else}}
+                            <a href="/products?page={{prevPage2}}">{{prevPage2}}</a>
                         {{/if}}
+                        {{/if}}
+
                         <a href="#" class="active">{{currentPage}}</a>
+
                         {{#if hasNextPage1}}
-                        <a href="/products?page={{nextPage1}}">{{nextPage1}}</a>
+                        {{#if Category}}
+                            <a href="/products?category={{Category}}&page={{nextPage1}}">{{nextPage1}}</a>
+                        {{else}}
+                            <a href="/products?page={{nextPage1}}">{{nextPage1}}</a>
                         {{/if}}
+                        {{/if}}
+
                         {{#if hasNextPage2}}
-                        <a href="/products?page={{nextPage2}}">{{nextPage2}}</a>
+                        {{#if Category}}
+                            <a href="/products?category={{Category}}&page={{nextPage2}}">{{nextPage2}}</a>
+                        {{else}}
+                            <a href="/products?page={{nextPage2}}">{{nextPage2}}</a>
                         {{/if}}
+                        {{/if}}
+
                         {{#if hasNextPage}}
-                        <a href="/products?page={{nextPage}}">&raquo;</a>
+                        {{#if Category}}
+                            <a href="/products?category={{Category}}&page={{nextPage}}">&raquo;</a>
+                        {{else}}
+                            <a href="/products?page={{nextPage}}">&raquo;</a>
+                        {{/if}}
                         {{/if}}
                     </div>
                 </div>

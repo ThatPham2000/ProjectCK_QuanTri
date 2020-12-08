@@ -68,5 +68,8 @@ module.exports.listProductPagination = async(req, res, next) => {
         hasNextPage2: (pagination.page + 2 < pagination.totalPages ? true : false),
         nextPage2: pagination.page + 2,
 
+        //category
+        category: Category
+
     })
 }
