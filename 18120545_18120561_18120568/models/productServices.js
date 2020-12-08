@@ -32,8 +32,9 @@ module.exports.removebyId = async(id) => {
 
 }
 
-module.exports.listProductPagination = async(currentPage, productsPerPage) => {
-    let list = await productModel.paginate({}, {
+
+module.exports.listProductPagination = async(filter, currentPage, productsPerPage) => {
+    let list = await productModel.paginate(filter, {
         page: currentPage,
         limit: productsPerPage
     });

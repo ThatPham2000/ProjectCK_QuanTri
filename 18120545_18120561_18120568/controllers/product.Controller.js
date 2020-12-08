@@ -45,7 +45,8 @@ module.exports.remove = async(req, res) => {
 const productPerPage = 10;
 module.exports.listProductPagination = async(req, res, next) => {
     const page = +req.query.page || 1;
-    const pagination = await productServices.listProductPagination(page, productPerPage);
+    const Category = req.query.category;
+    const pagination = await productServices.listProductPagination(Category ? { category: Category } : {}, page, productPerPage);
     res.render('products', {
         title: 'Products',
         subtitle: 'List product',
@@ -65,6 +66,7 @@ module.exports.listProductPagination = async(req, res, next) => {
         hasNextPage1: (pagination.page + 1 < pagination.totalPages ? true : false),
         nextPage1: pagination.page + 1,
         hasNextPage2: (pagination.page + 2 < pagination.totalPages ? true : false),
-        nextPage2: pagination.page + 2
+        nextPage2: pagination.page + 2,
+
     })
 }
