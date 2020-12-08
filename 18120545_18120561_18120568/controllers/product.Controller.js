@@ -1,4 +1,5 @@
 const productServices = require('../models/productServices');
+const formidable = require("formidable");
 
 module.exports.index = async(req, res, next) => {
     // Get books from model
@@ -10,6 +11,23 @@ module.exports.index = async(req, res, next) => {
 module.exports.add = (req, res, next) => {
     res.render('addANewProduct', { title: 'Products', subtitle: 'List product' });
 };
+
+module.exports.addProduct = (req, res, next) =>{
+
+    const form = formidable({multiples : true});
+
+    form.parse(req, async (err, fields, files) => {
+    
+        if (err){
+            return next(err);
+        }
+        
+        productServices.addANewProduct(fields, files);
+
+        res.redirect('/products');
+    });
+
+}
 
 module.exports.edit = async(req, res) => {
 
@@ -39,9 +57,9 @@ module.exports.postEdit = async(req, res) => {
 module.exports.remove = async(req, res) => {
 
     const id = req.params.id;
-
+    console.log(id);
     await productServices.removebyId(id);
-
+    res.redirect('/products')
 }
 
 const productPerPage = 10;
