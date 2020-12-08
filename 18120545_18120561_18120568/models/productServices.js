@@ -4,6 +4,9 @@ module.exports.listAllProduct = async() => {
     return await productModel.find({});
 };
 
+module.exports.addANewProduct = () => {
+
+};
 
 module.exports.findProductbyID = async(id) => {
     return await productModel.findById(id);

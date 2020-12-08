@@ -8,6 +8,7 @@ const productController = require('../controllers/product.Controller');
 // });
 
 router.get('/', productController.listProductPagination);
+router.get('/add', productController.add);
 router.get('/edit/:id', productController.edit);
 router.post('/edit/:id', productController.postEdit);
 

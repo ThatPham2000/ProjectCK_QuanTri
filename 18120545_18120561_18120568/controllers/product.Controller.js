@@ -7,7 +7,9 @@ module.exports.index = async(req, res, next) => {
     res.render('products', { title: 'Products', subtitle: 'List product', products });
 };
 
-
+module.exports.add = (req, res, next) => {
+    res.render('addANewProduct', { title: 'Products', subtitle: 'List product' });
+};
 
 module.exports.edit = async(req, res) => {
 
