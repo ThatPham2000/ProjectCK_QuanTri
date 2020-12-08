@@ -46,6 +46,7 @@ const productPerPage = 10;
 module.exports.listProductPagination = async(req, res, next) => {
     const page = +req.query.page || 1;
     const Category = req.query.category;
+    console.log("abc", Category)
     const pagination = await productServices.listProductPagination(Category ? { category: Category } : {}, page, productPerPage);
     res.render('products', {
         title: 'Products',
@@ -69,7 +70,7 @@ module.exports.listProductPagination = async(req, res, next) => {
         nextPage2: pagination.page + 2,
 
         //category
-        category: Category
+        Category: Category,
 
     })
 }
