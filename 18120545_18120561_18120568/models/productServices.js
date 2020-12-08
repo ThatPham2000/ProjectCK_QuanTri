@@ -1,11 +1,49 @@
+const fs = require("fs");
+
 const productModel = require('./productModel');
+const cloudinary = require('../dal/cloudinary');
+const { fields } = require('../dal/multer');
 
 module.exports.listAllProduct = async() => {
     return await productModel.find({});
 };
 
-module.exports.addANewProduct = () => {
+module.exports.addANewProduct = async(product, files) => {
 
+    const urls = []
+    
+
+    for (const file in files.image){
+        
+        const fileUpload = files.image[file];
+
+        if (fileUpload && fileUpload.size > 0){
+            
+            const filepath = fileUpload.path.split('\\').pop() + '.' + fileUpload.name.split('.').pop();
+            
+            fs.renameSync(fileUpload.path, __dirname + '/../public/uploads/' + filepath)
+            pathHost =  __dirname + '/../public/uploads/' + filepath;
+            newImage  = "/uploads/" + filepath;
+            
+            ret = await cloudinary.uploadSingleProduct(pathHost);
+
+            urls.push(ret.url);
+        }
+    }
+    
+    const newProduct = new productModel({
+        code: product.code,
+        name: product.name,
+        images: urls,
+        category: product.category,
+        producer: product.producer,
+        price: product.price,
+        oldPrice: product.oldPrice,
+
+    });
+    console.log(newProduct);
+    newProduct.save();
+    
 };
 
 module.exports.findProductbyID = async(id) => {
@@ -28,7 +66,7 @@ module.exports.editProductbyId = async(id, newProduct) => {
 
 
 module.exports.removebyId = async(id) => {
-
+    console.log("asdasdasd\n\n\n\n\n")
     productModel.findById(id)
         .remove()
         .exec();
