@@ -62,7 +62,7 @@ module.exports.remove = async(req, res) => {
     res.redirect('/products')
 }
 
-const productPerPage = 10;
+const productPerPage = 12;
 module.exports.listProductPagination = async(req, res, next) => {
     const page = +req.query.page || 1;
     const Category = req.query.category;

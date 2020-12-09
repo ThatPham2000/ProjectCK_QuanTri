@@ -11,26 +11,28 @@ module.exports.listAllProduct = async() => {
 module.exports.addANewProduct = async(product, files) => {
 
     const urls = []
-    
 
-    for (const file in files.image){
-        
+
+    for (const file in files.image) {
+
         const fileUpload = files.image[file];
 
-        if (fileUpload && fileUpload.size > 0){
-            
+        // console.log("o day ne", fileUpload.path)
+        if (fileUpload && fileUpload.size > 0) {
+
             const filepath = fileUpload.path.split('\\').pop() + '.' + fileUpload.name.split('.').pop();
-            
+
             fs.renameSync(fileUpload.path, __dirname + '/../public/uploads/' + filepath)
-            pathHost =  __dirname + '/../public/uploads/' + filepath;
-            newImage  = "/uploads/" + filepath;
-            
+            pathHost = __dirname + '/../public/uploads/' + filepath;
+            newImage = "/uploads/" + filepath;
+
             ret = await cloudinary.uploadSingleProduct(pathHost);
 
+            console.log(ret);
             urls.push(ret.url);
         }
     }
-    
+
     const newProduct = new productModel({
         code: product.code,
         name: product.name,
@@ -43,7 +45,7 @@ module.exports.addANewProduct = async(product, files) => {
     });
     console.log(newProduct);
     newProduct.save();
-    
+
 };
 
 module.exports.findProductbyID = async(id) => {

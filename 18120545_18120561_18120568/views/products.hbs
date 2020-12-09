@@ -1,151 +1,96 @@
-<div class="container-fluid">
-    <!-- ============================================================== -->
-    <!-- Start Page Content -->
-    <!-- ============================================================== -->
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="white-box">
-                <div class="d-flex justify-content-between">
-                    <h3 class="box-title">List of Products</h3>
-                    <div>
-                        <form action="#" method="get">
-                            <input type="text" name="name" placeholder="Search">
-                            <button type="submit">
-                                <i class="fa fa-search text-primary" aria-hidden="true"></i>
-                            </button>
-                        </form>
-                    </div>
-                    <div class="d-flex justify-content-center">
-                        <h3 class="box-title">Filter:&nbsp;</h3>
-                        <div class="btn-group">
-                            {{#if Category}}
-                            <button type="button" class="btn btn-primary">{{Category}}</button>
-                            {{else}}
-                            <button type="button" class="btn btn-primary">Category</button>
-                            {{/if}}
-                            <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="sr-only">Toggle Dropdown</span>
-                            </button>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="/products?category=PC">PC</a>
-                                <a class="dropdown-item" href="/products?category=laptop">Laptop</a>
-                                <a class="dropdown-item" href="/products?category=mobile">Mobile</a>
-                                <a class="dropdown-item" href="/products?category=Components">Components</a>
-                                <a class="dropdown-item" href="/products?category=Network equipment - Security">Network
-                                    equipment - Security</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<div class="content">
 
-                <div>
-                    <a href="/products/add" class="btn btn-default text-success">
-                        <i class="fa fa-plus" aria-hidden="true"></i>
-                        Add a new product
-                    </a>
-                </div>
+	<div class="module">
+		<div class="module-head">
+			<h3>List of Products</h3>
+		</div>
+		<div class="module-body">
+			<table class="table table-striped table">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Name</th>
+						<th>Price</th>
+						<th>CountSale</th>
+						<th>Edit</th>
+						<th>Delete</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each products}}
+					<tr>
+						<td>{{@index}}</td>
+						<td>
+							<a href="#">{{name}}</a>
+						</td>
+						<td>{{price}}</td>
+						<td>{{countSale}}</td>
+						<td>
+							<a href="/products/edit/{{_id}}" class="menu-icon icon-edit">
+								<i class="fas fa-edit"></i>
+							</a>
+						</td>
+						<td>
+							<a href="/products/delete/{{_id}}" class="menu-icon icon-trash">
+								<i class="fa fa-trash" aria-hidden="true"></i>
+							</a>
+						</td>
+					</tr>
+					{{/each}}
+				</tbody>
+			</table>
+			<div class="pagination">
+				{{#if hasPrevPage}}
+				{{#if Category}}
+				<a href="/products?category={{Category}}&page={{prevPage}}">&laquo;</a>
+				{{else}}
+				<a href="/products?page={{prevPage}}">&laquo;</a>
+				{{/if}}
+				{{/if}}
 
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th class="border-top-0">#</th>
-                                <th class="border-top-0">Name</th>
-                                {{!-- <th class="border-top-0">Description</th> --}}
-                                <th class="border-top-0">Price</th>
-                                <th class="border-top-0">CountSale</th>
-                                <th class="border-top-0">Edit</th>
-                                <th class="border-top-0">Delete</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {{#each products}}
-                            <tr>
-                                <td>{{@index}}</td>
-                                <td>
-                                    <a href="#">{{name}}</a>
-                                </td>
-                                {{!-- <td>{{description}}</td> --}}
-                                <td>{{price}}</td>
-                                <td>{{countSale}}</td>
-                                <td>
-                                    <a href="/products/edit/{{_id}}" class="btn btn-default text-primary add-to-cart ">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
-                                </td>
-                                <td>
-                                    <a href="/products/delete/{{_id}}" class="btn btn-default text-danger add-to-cart ">
-                                        <i class="fa fa-trash" aria-hidden="true"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            {{/each}}
-                        </tbody>
-                    </table>
-                    <div class="pagination">
-                        {{#if hasPrevPage}}
-                        {{#if Category}}
-                        <a href="/products?category={{Category}}&page={{prevPage}}">&laquo;</a>
-                        {{else}}
-                        <a href="/products?page={{prevPage}}">&laquo;</a>
-                        {{/if}}
-                        {{/if}}
+				{{#if hasPrevPage1}}
+				{{#if Category}}
+				<a href="/products?category={{Category}}&page={{prevPage1}}">{{prevPage1}}</a>
+				{{else}}
+				<a href="/products?page={{prevPage1}}">{{prevPage1}}</a>
+				{{/if}}
+				{{/if}}
 
-                        {{#if hasPrevPage1}}
-                        {{#if Category}}
-                        <a href="/products?category={{Category}}&page={{prevPage1}}">{{prevPage1}}</a>
-                        {{else}}
-                        <a href="/products?page={{prevPage1}}">{{prevPage1}}</a>
-                        {{/if}}
-                        {{/if}}
+				{{#if hasPrevPage2}}
+				{{#if Category}}
+				<a href="/products?category={{Category}}&page={{prevPage2}}">{{prevPage2}}</a>
+				{{else}}
+				<a href="/products?page={{prevPage2}}">{{prevPage2}}</a>
+				{{/if}}
+				{{/if}}
 
-                        {{#if hasPrevPage2}}
-                        {{#if Category}}
-                        <a href="/products?category={{Category}}&page={{prevPage2}}">{{prevPage2}}</a>
-                        {{else}}
-                        <a href="/products?page={{prevPage2}}">{{prevPage2}}</a>
-                        {{/if}}
-                        {{/if}}
+				<a href="#" class="active">{{currentPage}}</a>
 
-                        <a href="#" class="active">{{currentPage}}</a>
+				{{#if hasNextPage1}}
+				{{#if Category}}
+				<a href="/products?category={{Category}}&page={{nextPage1}}">{{nextPage1}}</a>
+				{{else}}
+				<a href="/products?page={{nextPage1}}">{{nextPage1}}</a>
+				{{/if}}
+				{{/if}}
 
-                        {{#if hasNextPage1}}
-                        {{#if Category}}
-                        <a href="/products?category={{Category}}&page={{nextPage1}}">{{nextPage1}}</a>
-                        {{else}}
-                        <a href="/products?page={{nextPage1}}">{{nextPage1}}</a>
-                        {{/if}}
-                        {{/if}}
+				{{#if hasNextPage2}}
+				{{#if Category}}
+				<a href="/products?category={{Category}}&page={{nextPage2}}">{{nextPage2}}</a>
+				{{else}}
+				<a href="/products?page={{nextPage2}}">{{nextPage2}}</a>
+				{{/if}}
+				{{/if}}
 
-                        {{#if hasNextPage2}}
-                        {{#if Category}}
-                        <a href="/products?category={{Category}}&page={{nextPage2}}">{{nextPage2}}</a>
-                        {{else}}
-                        <a href="/products?page={{nextPage2}}">{{nextPage2}}</a>
-                        {{/if}}
-                        {{/if}}
-
-                        {{#if hasNextPage}}
-                        {{#if Category}}
-                        <a href="/products?category={{Category}}&page={{nextPage}}">&raquo;</a>
-                        {{else}}
-                        <a href="/products?page={{nextPage}}">&raquo;</a>
-                        {{/if}}
-                        {{/if}}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- ============================================================== -->
-    <!-- End PAge Content -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- Right sidebar -->
-    <!-- ============================================================== -->
-    <!-- .right-sidebar -->
-    <!-- ============================================================== -->
-    <!-- End Right sidebar -->
-    <!-- ============================================================== -->
+				{{#if hasNextPage}}
+				{{#if Category}}
+				<a href="/products?category={{Category}}&page={{nextPage}}">&raquo;</a>
+				{{else}}
+				<a href="/products?page={{nextPage}}">&raquo;</a>
+				{{/if}}
+				{{/if}}
+			</div>
+		</div>
+	</div>
 </div>
+<!--/.content-->
