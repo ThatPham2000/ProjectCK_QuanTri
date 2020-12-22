@@ -6,6 +6,6 @@ const usersController = require('../controllers/user.Controller');
 // router.get('/', function(req, res, next) {
 //   res.render('users', {title: 'Users', subtitle: 'List users'});
 // });
-router.get('/', usersController.index);
+router.get('/', usersController.listUserPagination);
 
 module.exports = router;

@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+const mongoosePaginate = require('mongoose-paginate-v2');
+
 const userSchema = new mongoose.Schema({
     roles: String,
     isVerify: Boolean,
@@ -10,6 +12,8 @@ const userSchema = new mongoose.Schema({
     phone: String,
     __v: Number
 });
+
+userSchema.plugin(mongoosePaginate);
 
 const userModel = mongoose.model('users', userSchema, 'users');
 
