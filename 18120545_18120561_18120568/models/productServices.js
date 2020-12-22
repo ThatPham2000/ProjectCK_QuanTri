@@ -68,7 +68,6 @@ module.exports.editProductbyId = async(id, newProduct) => {
 
 
 module.exports.removebyId = async(id) => {
-    console.log("asdasdasd\n\n\n\n\n")
     productModel.findById(id)
         .remove()
         .exec();
