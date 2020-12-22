@@ -1,5 +1,5 @@
 const productServices = require('../models/productServices');
-const formidable = require("formidable");
+const cloudinary = require('../dal/cloudinary')
 
 module.exports.index = async(req, res, next) => {
     // Get books from model
@@ -12,20 +12,35 @@ module.exports.add = (req, res, next) => {
     res.render('addANewProduct', { title: 'Products', subtitle: 'List product' });
 };
 
-module.exports.addProduct = (req, res, next) =>{
+module.exports.addProduct = async(req, res, next) =>{
 
-    const form = formidable({multiples : true});
-
-    form.parse(req, async (err, fields, files) => {
     
-        if (err){
-            return next(err);
-        }
+    try{
+        const {body} = req;
         
-        productServices.addANewProduct(fields, files);
+      
+        var avatar =[];
+        var cloudId = [];
+        console.log(req.files.length);
+        for (const file of req.files){
 
+            console.log(file);
+            const ret = await cloudinary.uploadSingleProduct(file.path);
+            console.log(ret);
+
+            avatar.push(ret.url);
+            cloudId.push(ret.id);
+            
+        }
+
+        productServices.addANewProduct(body, {avatar, cloudId});
+        
         res.redirect('/products');
-    });
+    }catch(err){
+        res.render("error", {
+            message: "Fail to add a product"
+        })
+    }
 
 }
 

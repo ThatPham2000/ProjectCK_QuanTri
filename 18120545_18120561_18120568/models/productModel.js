@@ -110,6 +110,10 @@ const productSchema = mongoose.Schema({
     isRemove: {
         type: Boolean,
         default: 0,
+    },
+    cloudinary_id:{
+        type: Array,
+        default: [],
     }
 });
 

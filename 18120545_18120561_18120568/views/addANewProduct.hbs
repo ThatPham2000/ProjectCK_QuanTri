@@ -5,32 +5,32 @@
             <h3>Add a new product</h3>
         </div>
         <div class="module-body">
-            <form class="form-horizontal row-fluid" method="POST">
+            <form class="form-horizontal row-fluid" method="POST" enctype="multipart/form-data" action = "/products/add">
                 <div class="control-group">
                     <label class="control-label" for="basicinput">Code</label>
                     <div class="controls">
-                        <input type="text" id="codeproduct" placeholder="Input code..." class="span8" autofocus>
+                        <input type="text" id="codeproduct" placeholder="Input code..." class="span8" name = "code" autofocus>
                     </div>
                 </div>
 
                 <div class="control-group">
                     <label class="control-label" for="basicinput">Name</label>
                     <div class="controls">
-                        <input type="text" id="nameproduct" placeholder="Input name..." class="span8" autofocus>
+                        <input type="text" id="nameproduct" placeholder="Input name..." class="span8" name = "name" autofocus>
                     </div>
                 </div>
 
                 <div class="control-group">
                     <label class="control-label" for="basicinput">Producer</label>
                     <div class="controls">
-                        <input type="text" id="nameproducer" placeholder="Input name producer..." class="span8">
+                        <input type="text" id="nameproducer" placeholder="Input name producer..." class="span8" name ="producer">
                     </div>
                 </div>
 
                 <div class="control-group">
                     <label class="control-label" for="basicinput">Category</label>
                     <div class="controls">
-                        <select tabindex="1" data-placeholder="Select" class="span8">
+                        <select tabindex="1" data-placeholder="Select" class="span8" name = "category">
                             <option value="PC">PC</option>
                             <option value="Laptop">Laptop</option>
                             <option value="Mobile">Mobile</option>
@@ -44,7 +44,7 @@
 					<label class="control-label" for="basicinput">Price</label>
 					<div class="controls">
 						<div class="input-append">
-							<input type="text" placeholder="1.000.000đ" class="span8"><span class="add-on">VNĐ</span>
+							<input type="text" placeholder="1.000.000đ" class="span8" name = "price"><span class="add-on">VNĐ</span>
 						</div>
 					</div>
 				</div>
@@ -52,7 +52,7 @@
 					<label class="control-label" for="basicinput">Old Price</label>
 					<div class="controls">
 						<div class="input-append">
-							<input type="text" placeholder="1.000.000d" class="span8"><span class="add-on">VNĐ</span>
+							<input type="text" placeholder="1.000.000d" class="span8" name = "oldPrice"><span class="add-on">VNĐ</span>
 						</div>
 					</div>
 				</div>
@@ -74,7 +74,7 @@
                 <div class="control-group">
                     <label class="control-label" for="basicinput">Images</label>
                     <div class="controls">
-                        <input type="file" id="basicinput" multiple accept="image/*">
+                        <input type="file" id="basicinput" multiple accept="image/*" name = "image">
                     </div>
                 </div>
 
