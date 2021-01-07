@@ -1,0 +1,98 @@
+<div class="content">
+
+    <div class="module">
+        <div class="module-head">
+            <h3>Edit a product</h3>
+        </div>
+        <div class="module-body">
+            <form class="form-horizontal row-fluid" method="POST" enctype="multipart/form-data" action="/products/edit/{{_id}}">
+                <div class="control-group">
+                    <label class="control-label" for="basicinput">Code</label>
+                    <div class="controls">
+                        <input type="text" id="codeproduct" placeholder="Input code..." class="span8" name="code" autofocus value="{{code}}">
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="basicinput">Name</label>
+                    <div class="controls">
+                        <input type="text" id="nameproduct" placeholder="Input name..." class="span8" name="name" value="{{name}}">
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="basicinput">Producer</label>
+                    <div class="controls">
+                        <input type="text" id="nameproducer" placeholder="Input name producer..." class="span8" name ="producer" value="{{producer}}">
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="basicinput">Category</label>
+                    <div class="controls">
+                        <select tabindex="1" data-placeholder="Select" class="span8" name = "category">
+                            <option value="PC" selected>{{category}}</option>
+                            {{#each listCategoty}}
+                                <option value="{{name}}">{{name}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                </div>
+
+                <div class="control-group">
+					<label class="control-label" for="basicinput">Price</label>
+					<div class="controls">
+						<div class="input-append">
+							<input type="text" placeholder="1.000.000đ" class="span8" name = "price" value="{{price}}"><span class="add-on">VNĐ</span>
+						</div>
+					</div>
+				</div>
+                <div class="control-group">
+					<label class="control-label" for="basicinput">Old Price</label>
+					<div class="controls">
+						<div class="input-append">
+							<input type="text" placeholder="1.000.000d" class="span8" name = "oldPrice" value="{{oldPrice}}"><span class="add-on">VNĐ</span>
+						</div>
+					</div>
+				</div>
+
+                {{!-- <div class="control-group">
+					<label class="control-label" for="basicinput">Details</label>
+					<div class="controls">
+						<textarea class="span8" rows="5" placeholder="Input details..." aria-valuenow="{{deails}}"></textarea>
+					</div>
+				</div>
+
+                <div class="control-group">
+					<label class="control-label" for="basicinput">Description</label>
+					<div class="controls">
+						<textarea class="span8" rows="5" placeholder="Input description..." aria-valuenow="{{descriptions}}"></textarea>
+					</div>
+				</div> --}}
+
+                {{!-- <div class="control-group">
+                    <label class="control-label" for="basicinput">Images</label>
+                    <div class="controls">
+                        <input type="file" id="basicinput" multiple accept="image/*" name = "image" value="{{images}}">
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="basicinput">Videos</label>
+                    <div class="controls">
+                        <input type="file" id="basicinput" multiple accept="video/*" value="{{video}}">
+                    </div>
+                </div> --}}
+
+
+
+                <div class="control-group">
+                    <div class="controls">
+                        <button type="submit" class="btn btn-large btn-success">Submit Form</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--/.content-->

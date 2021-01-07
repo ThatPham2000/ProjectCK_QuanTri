@@ -10,7 +10,7 @@ module.exports.listAllProduct = async() => {
 
 module.exports.addANewProduct = async(product, cloud) => {
 
-  
+
 
     const newProduct = new productModel({
         code: product.code,
@@ -32,13 +32,15 @@ module.exports.findProductbyID = async(id) => {
 }
 
 module.exports.editProductbyId = async(id, newProduct) => {
-    productModel.findById(id)
+    await productModel.findById(id)
         .then(products => {
 
-            products.title = newProduct.title;
-            products.description = newProduct.description;
+            products.code = newProduct.code;
+            products.name = newProduct.name;
+            products.producer = newProduct.producer;
+            products.category = newProduct.category;
             products.price = newProduct.price;
-
+            products.oldPrice = newProduct.oldPrice;
 
             products.save();
         })

@@ -14,7 +14,7 @@ router.get('/add', productController.add);
 router.post('/add', upload.array("image", 100), productController.addProduct);
 
 router.get('/edit/:id', productController.edit);
-router.post('/edit/:id', productController.postEdit);
+router.post('/edit/:id', upload.array("image", 100), productController.postEdit);
 
 
 router.get('/delete/:id', productController.remove);

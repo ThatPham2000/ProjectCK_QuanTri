@@ -1,6 +1,7 @@
 const productServices = require('../models/productServices');
 const cloudinary = require('../dal/cloudinary')
 
+
 module.exports.index = async(req, res, next) => {
     // Get books from model
     const products = await productServices.listAllProduct();
@@ -12,17 +13,17 @@ module.exports.add = (req, res, next) => {
     res.render('addANewProduct', { title: 'Products', subtitle: 'List product' });
 };
 
-module.exports.addProduct = async(req, res, next) =>{
+module.exports.addProduct = async(req, res, next) => {
 
-    
-    try{
-        const {body} = req;
-        
-      
-        var avatar =[];
+
+    try {
+        const { body } = req;
+
+
+        var avatar = [];
         var cloudId = [];
         console.log(req.files.length);
-        for (const file of req.files){
+        for (const file of req.files) {
 
             console.log(file);
             const ret = await cloudinary.uploadSingleProduct(file.path);
@@ -30,13 +31,13 @@ module.exports.addProduct = async(req, res, next) =>{
 
             avatar.push(ret.url);
             cloudId.push(ret.id);
-            
+
         }
 
-        productServices.addANewProduct(body, {avatar, cloudId});
-        
+        productServices.addANewProduct(body, { avatar, cloudId });
+
         res.redirect('/products');
-    }catch(err){
+    } catch (err) {
         res.render("error", {
             message: "Fail to add a product"
         })
@@ -47,27 +48,82 @@ module.exports.addProduct = async(req, res, next) =>{
 module.exports.edit = async(req, res) => {
 
     const id = req.params.id;
+    const data = await productServices.findProductbyID(id);
+    const listAllCategory = [{ name: "PC" }, {
+            name: "Laptop"
+        },
+        {
+            name: "Mobile"
+        },
+        {
+            name: "Components"
+        },
+        {
+            name: "Network equipment - Security"
+        }
+    ];
+    const List = listAllCategory.filter(item => item.name !== data.category);
 
-    var data = await productServices.findProductbyID(id);
-
-    res.render('edit', {
+    res.render('editProduct', {
         _id: data._id,
+        code: data.code,
         name: data.name,
-        description: data.description,
-        price: data.price
+        producer: data.producer,
+        category: data.category,
+        listCategoty: List,
+        descriptions: data.descriptions,
+        price: data.price,
+        oldPrice: data.oldPrice,
+        details: data.details,
+        images: data.images,
+        video: data.video
     });
 
 }
 
 module.exports.postEdit = async(req, res) => {
 
-    const { title, description, price } = req.body;
-    const id = req.params.id;
+    try {
+        const { body } = req;
 
-    await productServices.editProductbyId(id, req.body);
 
-    res.redirect('/products');
+        var avatar = [];
+        var cloudId = [];
+
+        for (const file of req.files) {
+
+            //console.log(file);
+            const ret = await cloudinary.uploadSingleProduct(file.path);
+            //console.log(ret);
+
+            avatar.push(ret.url);
+            cloudId.push(ret.id);
+
+        }
+
+        const newProduct = {
+            code: body.code,
+            name: body.name,
+            producer: body.producer,
+            category: body.category,
+            price: body.price,
+            oldPrice: body.oldPrice,
+            images: avatar,
+            cloudinary_id: cloudId,
+        };
+        const id = req.params.id;
+
+        //console.log(id);
+        //console.log(newProduct);
+        await productServices.editProductbyId(id, newProduct);
+
+        res.redirect('/products');
+    } catch (err) {
+        res.status(404)
+            .send(err);
+    }
 }
+
 
 module.exports.remove = async(req, res) => {
 
