@@ -19,7 +19,6 @@ module.exports.addProduct = async(req, res, next) => {
     try {
         const { body } = req;
 
-
         var avatar = [];
         var cloudId = [];
         console.log(req.files.length);
@@ -34,12 +33,14 @@ module.exports.addProduct = async(req, res, next) => {
 
         }
 
-        productServices.addANewProduct(body, { avatar, cloudId });
+        await productServices.addANewProduct(body, { avatar, cloudId });
 
         res.redirect('/products');
     } catch (err) {
+        console.log(err);
         res.render("error", {
-            message: "Fail to add a product"
+            message: "Fail to add a product",
+            status: 500
         })
     }
 

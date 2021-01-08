@@ -1,0 +1,59 @@
+<div class="content">
+    <div class="module">
+        <div class="module-head">
+            <h3>
+                All Members</h3>
+        </div>
+
+        <div class="module-body">
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="media user">
+                        <a class="media-avatar pull-left" href="#">
+                            <img src="{{image}}">
+                        </a>
+                        <div class="media-body">
+                            <h3 class="media-title">
+                                {{name}}
+                            </h3>
+                            <p>
+                                <small class="muted">Địa chỉ: {{address}}</small>
+                            </p>
+                            <p>
+                                <small class="muted">Email: {{email}}</small>
+                            </p>
+                            <p>
+                                <small class="muted">Phone: {{phone}}</small>
+                            </p>
+                            <p>
+                                <small class="muted">Vai trò: {{roles}}</small>
+                            </p>
+                            {{#if isBlock}}
+                            <p>
+                                <small class="muted">Tình trạng: Bị khóa</small>
+                            </p>
+                            {{else}}
+                            <p>
+                                <small class="muted">Tình trạng: Không bị khóa</small>
+                            </p>
+                            {{/if}}
+                            <div class="media-option btn-group shaded-icon">
+                                {{!-- <a href="/users/{{_id}}/lock/{{isBlock}}">
+                                    <button class="btn btn-small">
+                                        <i class="icon-lock"></i>
+                                    </button>
+                                </a> --}}
+                                <form action="/users/{{_id}}/lock" method="get">
+                                    <button class="btn btn-small" type="submit">
+                                        <i class="icon-lock"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/.content-->

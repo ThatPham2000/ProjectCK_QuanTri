@@ -46,3 +46,29 @@ module.exports.listUserPagination = async(req, res, next) => {
 
     })
 }
+
+module.exports.detailuser = async(req, res, next) => {
+    const id = req.params.id;
+    const user = await userModel.findById(id);
+    console.log(`tình trạng: ${user.isBlock}`);
+    res.render('userdetail', {
+        _id: id,
+        image: user.image,
+        roles: user.roles,
+        name: user.name,
+        email: user.email,
+        phone: user.phone,
+        isBlock: user.isBlock,
+        address: user.address
+    });
+}
+
+module.exports.lockuser = async(req, res, next) => {
+    const id = req.params.id;
+
+    const user = await userModel.findById(id);
+    const status = user.isBlock;
+    await userModel.updateOne({ _id: id }, { isBlock: !status });
+
+    res.redirect('/users');
+}

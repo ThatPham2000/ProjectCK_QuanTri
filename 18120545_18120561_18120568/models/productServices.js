@@ -10,8 +10,6 @@ module.exports.listAllProduct = async() => {
 
 module.exports.addANewProduct = async(product, cloud) => {
 
-
-
     const newProduct = new productModel({
         code: product.code,
         name: product.name,
