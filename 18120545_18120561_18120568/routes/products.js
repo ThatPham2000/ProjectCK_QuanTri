@@ -18,4 +18,6 @@ router.post('/edit/:id', upload.array("image", 100), productController.postEdit)
 
 
 router.get('/delete/:id', productController.remove);
+
+router.get('/top10', productController.top10);
 module.exports = router;

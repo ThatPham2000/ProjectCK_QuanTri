@@ -134,6 +134,13 @@ module.exports.remove = async(req, res) => {
     res.redirect('/products')
 }
 
+module.exports.top10 = async(req, res) => {
+    const product10 = await productServices.getTop10();
+    res.render('top10', {
+        products: product10
+    });
+}
+
 const productPerPage = 12;
 module.exports.listProductPagination = async(req, res, next) => {
     const page = +req.query.page || 1;

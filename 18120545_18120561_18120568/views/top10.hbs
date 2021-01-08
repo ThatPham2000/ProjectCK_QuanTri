@@ -1,0 +1,31 @@
+<div class="content">
+
+	<div class="module">
+		<div class="module-head">
+			<h3>List of top 10 Products</h3>
+		</div>
+		<div class="module-body">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Name</th>
+						<th>CountSale</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each products}}
+					<tr>
+						<td>{{@index}}</td>
+						<td>
+							{{name}}
+						</td>
+						<td>{{countSale}}</td>
+					</tr>
+					{{/each}}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<!--/.content-->
