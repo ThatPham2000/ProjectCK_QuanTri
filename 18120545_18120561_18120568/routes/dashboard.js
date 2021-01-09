@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const Revenue = require('../controllers/Revenue.Controller');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -36,5 +37,6 @@ router.get('/ui-button-icon', function(req, res, next) {
 router.get('/ui-typography', function(req, res, next) {
     res.render('ui-typography', { title: 'Form', subtitle: 'Form' });
 });
+router.get('/revenue', Revenue.revenue);
 
 module.exports = router;
