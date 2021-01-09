@@ -20,8 +20,8 @@ router.get('/form', function(req, res, next) {
 router.get('/message', function(req, res, next) {
     res.render('message', { title: 'Form', subtitle: 'Form' });
 });
-router.get('/other-login', function(req, res, next) {
-    res.render('other-login', { title: 'Form', subtitle: 'Form' });
+router.get('/login', function(req, res, next) {
+    res.render('other-login', { layout: false });
 });
 router.get('/other-user-listing', function(req, res, next) {
     res.render('other-user-listing', { title: 'Form', subtitle: 'Form' });

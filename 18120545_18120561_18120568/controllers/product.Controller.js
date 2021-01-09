@@ -1,5 +1,6 @@
 const productServices = require('../models/productServices');
 const cloudinary = require('../dal/cloudinary')
+const CheckoutService = require('../models/checkout.service');
 
 
 module.exports.index = async(req, res, next) => {
@@ -141,6 +142,27 @@ module.exports.top10 = async(req, res) => {
     });
 }
 
+module.exports.order = async(req, res) => {
+    const productwaiting = await CheckoutService.findCheckoutBystatus('waiting');
+    const productTransferring = await CheckoutService.findCheckoutBystatus('transferring');
+    const productDelivered = await CheckoutService.findCheckoutBystatus('delivered');
+    res.render('manageOrder', {
+        products1: productwaiting,
+        products2: productTransferring,
+        products3: productDelivered
+    })
+}
+
+module.exports.toTransferring = async(req, res) => {
+    const id = req.params.id;
+    await CheckoutService.ChangeStatus(id, 'transferring');
+    res.redirect('/products/orders');
+}
+module.exports.toDelivered = async(req, res) => {
+    const id = req.params.id;
+    await CheckoutService.ChangeStatus(id, 'delivered');
+    res.redirect('/products/orders');
+}
 const productPerPage = 12;
 module.exports.listProductPagination = async(req, res, next) => {
     const page = +req.query.page || 1;

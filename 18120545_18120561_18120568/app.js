@@ -7,8 +7,12 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const bodyParser = require('body-parser');
+const { handlebars } = require('hbs');
 
-
+handlebars.registerHelper('incremented', function(index) {
+    index++;
+    return index;
+});
 
 var dashboardRouter = require('./routes/dashboard');
 var usersRouter = require('./routes/users');

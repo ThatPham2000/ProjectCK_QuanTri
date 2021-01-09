@@ -20,4 +20,9 @@ router.post('/edit/:id', upload.array("image", 100), productController.postEdit)
 router.get('/delete/:id', productController.remove);
 
 router.get('/top10', productController.top10);
+
+router.get('/orders', productController.order);
+router.get('/toTransferring/:id', productController.toTransferring);
+router.get('/toDelivered/:id', productController.toDelivered);
+
 module.exports = router;

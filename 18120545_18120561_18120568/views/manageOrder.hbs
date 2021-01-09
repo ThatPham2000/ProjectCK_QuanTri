@@ -1,0 +1,108 @@
+<div class="content">
+	<div class="module">
+		<div class="module-head">
+			<h3>Waiting</h3>
+		</div>
+		<div class="module-body">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>ID</th>
+						<th>Receiver</th>
+						<th>Phone</th>
+						<th>Price</th>
+						<th>To Transferring</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each products1}}
+					<tr>
+						<td>{{incremented @index}}</td>
+						<td>{{_id}}</td>
+						<td>{{receiver}}</td>
+						<td>{{phone}}</td>
+						<td>{{totalCost}}</td>
+                        <td>
+							<a href="/products/toTransferring/{{_id}}" class="menu-icon icon-truck">
+							</a>
+						</td>
+					</tr>
+					{{/each}}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<!--/.content-->
+
+<div class="content">
+	<div class="module">
+		<div class="module-head">
+			<h3>Transferring</h3>
+		</div>
+		<div class="module-body">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>ID</th>
+						<th>Receiver</th>
+						<th>Phone</th>
+						<th>Price</th>
+						<th>To Delivered</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each products2}}
+					<tr>
+						<td>{{incremented @index}}</td>
+						<td>{{_id}}</td>
+						<td>{{receiver}}</td>
+						<td>{{phone}}</td>
+						<td>{{totalCost}}</td>
+                        <td>
+							<a href="/products/toDelivered/{{_id}}" class="menu-icon icon-check">
+							</a>
+						</td>
+					</tr>
+					{{/each}}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<!--/.content-->
+
+<div class="content">
+	<div class="module">
+		<div class="module-head">
+			<h3>Delivered</h3>
+		</div>
+		<div class="module-body">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>ID</th>
+						<th>Receiver</th>
+						<th>Phone</th>
+						<th>Price</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each products3}}
+					<tr>
+						<td>{{incremented @index}}</td>
+						<td>{{_id}}</td>
+						<td>{{receiver}}</td>
+						<td>{{phone}}</td>
+						<td>{{totalCost}}</td>
+					</tr>
+					{{/each}}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<!--/.content-->
