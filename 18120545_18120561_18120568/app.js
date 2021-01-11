@@ -8,6 +8,10 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const bodyParser = require('body-parser');
 const { handlebars } = require('hbs');
+const flash = require('express-flash')
+const session = require('express-session')
+const methodOverride = require('method-override')
+const passport = require('passport');
 
 handlebars.registerHelper('incremented', function(index) {
     index++;
@@ -35,6 +39,16 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(flash());
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(passport.initialize())
+app.use(passport.session())
+app.use(methodOverride('_method'))
 
 app.use('/', dashboardRouter);
 app.use('/users', usersRouter);

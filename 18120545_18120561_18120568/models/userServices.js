@@ -11,3 +11,10 @@ module.exports.listUsersPagination = async(filter, currentPage, usersPerPage) =>
     });
     return list;
 };
+
+module.exports.getUserbyID = async(id) => {
+    return await userModel.findById(id);
+}
+module.exports.getUserbyEmail = async(email) => {
+    return await userModel.findOne({ 'email': email });
+}

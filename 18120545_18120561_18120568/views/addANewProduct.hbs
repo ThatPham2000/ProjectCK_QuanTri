@@ -9,21 +9,21 @@
                 <div class="control-group">
                     <label class="control-label" for="basicinput">Code</label>
                     <div class="controls">
-                        <input type="text" id="codeproduct" placeholder="Input code..." class="span8" name = "code" autofocus>
+                        <input type="text" id="codeproduct" placeholder="Input code..." class="span8" name = "code" autofocus required
                     </div>
                 </div>
 
                 <div class="control-group">
                     <label class="control-label" for="basicinput">Name</label>
                     <div class="controls">
-                        <input type="text" id="nameproduct" placeholder="Input name..." class="span8" name = "name" autofocus>
+                        <input type="text" id="nameproduct" placeholder="Input name..." class="span8" name = "name" required>
                     </div>
                 </div>
 
                 <div class="control-group">
                     <label class="control-label" for="basicinput">Producer</label>
                     <div class="controls">
-                        <input type="text" id="nameproducer" placeholder="Input name producer..." class="span8" name ="producer">
+                        <input type="text" id="nameproducer" placeholder="Input name producer..." class="span8" name ="producer" required>
                     </div>
                 </div>
 
@@ -44,7 +44,7 @@
 					<label class="control-label" for="basicinput">Price</label>
 					<div class="controls">
 						<div class="input-append">
-							<input type="text" placeholder="1.000.000đ" class="span8" name = "price"><span class="add-on">VNĐ</span>
+							<input type="text" placeholder="1.000.000đ" class="span8" name = "price" required><span class="add-on">VNĐ</span>
 						</div>
 					</div>
 				</div>
@@ -52,7 +52,7 @@
 					<label class="control-label" for="basicinput">Old Price</label>
 					<div class="controls">
 						<div class="input-append">
-							<input type="text" placeholder="1.000.000d" class="span8" name = "oldPrice"><span class="add-on">VNĐ</span>
+							<input type="text" placeholder="1.000.000d" class="span8" name = "oldPrice" required><span class="add-on">VNĐ</span>
 						</div>
 					</div>
 				</div>
@@ -60,28 +60,28 @@
                 <div class="control-group">
 					<label class="control-label" for="basicinput">Details</label>
 					<div class="controls">
-						<textarea class="span8" rows="5" placeholder="Input details..."></textarea>
+						<textarea class="span8" rows="5" placeholder="Input details..." required></textarea>
 					</div>
 				</div>
 
                 <div class="control-group">
 					<label class="control-label" for="basicinput">Description</label>
 					<div class="controls">
-						<textarea class="span8" rows="5" placeholder="Input description..."></textarea>
+						<textarea class="span8" rows="5" placeholder="Input description..." required></textarea>
 					</div>
 				</div>
 
                 <div class="control-group">
                     <label class="control-label" for="basicinput">Images</label>
                     <div class="controls">
-                        <input type="file" id="basicinput" multiple accept="image/*" name = "image">
+                        <input type="file" id="basicinput" multiple accept="image/*" name = "image" required>
                     </div>
                 </div>
 
                 <div class="control-group">
                     <label class="control-label" for="basicinput">Videos</label>
                     <div class="controls">
-                        <input type="file" id="basicinput" multiple accept="video/*">
+                        <input type="file" id="basicinput" multiple accept="video/*" required>
                     </div>
                 </div>
 

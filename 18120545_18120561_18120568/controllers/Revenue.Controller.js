@@ -24,7 +24,6 @@ module.exports.revenue = async(req, res) => {
         const money2 = money1.replace(".", "");
         const money4 = money2.replace(".", "");
         const money3 = parseInt(money4);
-        console.log(money3);
 
         if (month === 0) {
             t1 += money3;
@@ -52,8 +51,6 @@ module.exports.revenue = async(req, res) => {
             t12 += money3;
         }
     }
-    console.log(t1);
-    console.log(t2)
     res.render('revenue', {
         title: 'Revenue',
         T1: t1,
