@@ -37,6 +37,7 @@
                                 <small class="muted">Tình trạng: Không bị khóa</small>
                             </p>
                             {{/if}}
+                            {{#if CheckDifferentID}}
                             <div class="media-option btn-group shaded-icon">
                                 {{!-- <a href="/users/{{_id}}/lock/{{isBlock}}">
                                     <button class="btn btn-small">
@@ -49,6 +50,7 @@
                                     </button>
                                 </form>
                             </div>
+                            {{/if}}
                         </div>
                     </div>
                 </div>

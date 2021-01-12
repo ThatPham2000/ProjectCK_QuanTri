@@ -49,8 +49,9 @@ module.exports.listUserPagination = async(req, res, next) => {
 
 module.exports.detailuser = async(req, res, next) => {
     const id = req.params.id;
+    const currentID = req.session.passport.user;
+    const checkDifferentID = (id !== currentID)
     const user = await userModel.findById(id);
-    console.log(`tình trạng: ${user.isBlock}`);
     res.render('userdetail', {
         _id: id,
         image: user.image,
@@ -59,7 +60,8 @@ module.exports.detailuser = async(req, res, next) => {
         email: user.email,
         phone: user.phone,
         isBlock: user.isBlock,
-        address: user.address
+        address: user.address,
+        CheckDifferentID: checkDifferentID
     });
 }
 
