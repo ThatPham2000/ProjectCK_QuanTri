@@ -52,8 +52,8 @@
                 <img src="{{user.image}}" class="nav-avatar" />
                 <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="#">My Profile</a></li>
-                <li><a href="#">Edit Profile</a></li>
+                <li><a href="/users/{{user.id}}">My Profile</a></li>
+                <li><a href="/users/editProfile/{{user.id}}">Edit Profile</a></li>
               </ul>
               {{/if}}
             </li>

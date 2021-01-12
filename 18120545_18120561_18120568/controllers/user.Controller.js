@@ -65,6 +65,37 @@ module.exports.detailuser = async(req, res, next) => {
     });
 }
 
+module.exports.editProfile = async(req, res, next) => {
+    const id = req.params.id;
+    const user = await userModel.findById(id);
+    res.render('editProfile', {
+        _id: id,
+        image: user.image,
+        roles: user.roles,
+        name: user.name,
+        email: user.email,
+        phone: user.phone,
+        isBlock: user.isBlock,
+        address: user.address,
+    });
+}
+
+module.exports.editProfilePost = async(req, res, next) => {
+    const id = req.params.id;
+    const user = {
+        name: req.body.name,
+        address: req.body.address,
+        email: req.body.email,
+        phone: req.body.phone,
+        roles: req.body.roles
+    }
+    console.log(user);
+
+    await userServices.editUserbyId(id, user);
+
+    await res.redirect(`/users/${id}`);
+}
+
 module.exports.lockuser = async(req, res, next) => {
     const id = req.params.id;
 

@@ -18,3 +18,18 @@ module.exports.getUserbyID = async(id) => {
 module.exports.getUserbyEmail = async(email) => {
     return await userModel.findOne({ 'email': email });
 }
+
+module.exports.editUserbyId = async(id, newUser) => {
+    if (newUser !== null) {
+        await userModel.findById(id)
+            .then(user => {
+                user.name = newUser.name;
+                user.address = newUser.address;
+                user.email = newUser.email;
+                user.phone = newUser.phone;
+                user.roles = newUser.roles;
+
+                user.save();
+            })
+    }
+}

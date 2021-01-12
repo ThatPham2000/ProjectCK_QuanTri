@@ -9,6 +9,8 @@ const Authentication = require('../auth');
 router.get('/', Authentication.checkAuthenticated, usersController.listUserPagination);
 router.get('/:id', Authentication.checkAuthenticated, usersController.detailuser);
 router.get('/:id/lock', Authentication.checkAuthenticated, usersController.lockuser);
+router.get('/editProfile/:id', Authentication.checkAuthenticated, usersController.editProfile)
+router.post('/editProfile/:id', Authentication.checkAuthenticated, usersController.editProfilePost)
 
 
 module.exports = router;
