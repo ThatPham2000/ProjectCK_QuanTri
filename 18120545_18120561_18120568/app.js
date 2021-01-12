@@ -44,11 +44,20 @@ app.use(flash());
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    cookie: {
+        maxAge: 1000 * 60 * 5
+    }
 }));
 app.use(passport.initialize())
 app.use(passport.session())
 app.use(methodOverride('_method'))
+
+app.use((req, res, next) => {
+    res.locals.session = req.session;
+    req.app.locals.user = req.user || null;
+    next();
+});
 
 app.use('/', dashboardRouter);
 app.use('/users', usersRouter);
