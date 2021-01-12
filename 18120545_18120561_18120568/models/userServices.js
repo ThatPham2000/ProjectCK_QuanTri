@@ -20,7 +20,7 @@ module.exports.getUserbyEmail = async(email) => {
 }
 
 module.exports.editUserbyId = async(id, newUser) => {
-    if (newUser !== null) {
+    if (newUser.email !== undefined) {
         await userModel.findById(id)
             .then(user => {
                 user.name = newUser.name;

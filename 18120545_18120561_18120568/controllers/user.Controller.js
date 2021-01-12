@@ -82,15 +82,14 @@ module.exports.editProfile = async(req, res, next) => {
 
 module.exports.editProfilePost = async(req, res, next) => {
     const id = req.params.id;
+    const body = req.body;
     const user = {
-        name: req.body.name,
-        address: req.body.address,
-        email: req.body.email,
-        phone: req.body.phone,
-        roles: req.body.roles
+        name: body.name,
+        address: body.address,
+        email: body.email,
+        phone: body.phone,
+        roles: body.roles
     }
-    console.log(user);
-
     await userServices.editUserbyId(id, user);
 
     await res.redirect(`/users/${id}`);
