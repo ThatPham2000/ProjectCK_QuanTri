@@ -4,7 +4,7 @@ const userService = require('./models/userServices')
 
 function initialize(passport) {
     const AuthenticateUser = async(email, password, done) => {
-        const user = await userService.getUserbyEmail(email);
+        const user = await userService.getUserAdminbyEmail(email);
 
         if (user == null) {
             return done(null, false, { message: 'No user with that email' })
@@ -25,7 +25,7 @@ function initialize(passport) {
     passport.serializeUser((user, done) => done(null, user.id))
 
     passport.deserializeUser(async(id, done) => {
-        return done(null, await userService.getUserbyID(id))
+        return done(null, await userService.getUserAdminbyID(id))
     })
 }
 
