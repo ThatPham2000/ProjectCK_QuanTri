@@ -6,13 +6,14 @@ const passport = require('passport');
 const Authentication = require('../auth');
 
 const initializePassport = require('../passport-config');
-const UserService = require('../models/userServices')
+const userService = require('../models/userServices')
+const revenue = require('../models/RevenueModel')
 
 initializePassport(passport)
 
 /* GET home page. */
-router.get('/', Authentication.checkAuthenticated, function(req, res, next) {
-    res.render('dashboard', { title: 'TechShop', subtitle: 'Dashboard' });
+router.get('/', Authentication.checkAuthenticated, async function(req, res, next) {
+    res.render('dashboard', { title: 'TechShop', subtitle: 'Dashboard', numberUser: await userService.listNumAllUsers(), Profit: await revenue.total() });
 });
 router.get('/dashboard', Authentication.checkAuthenticated, function(req, res, next) {
     res.render('dashboard', { title: 'TechShop', subtitle: 'Dashboard' });

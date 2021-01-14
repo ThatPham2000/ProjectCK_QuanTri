@@ -4,6 +4,10 @@ module.exports.listAllUsers = async() => {
     return await userModel.find();
 };
 
+module.exports.listNumAllUsers = async() => {
+    return await (await userModel.find()).length;
+};
+
 module.exports.listUsersPagination = async(filter, currentPage, usersPerPage) => {
     let list = await userModel.paginate(filter, {
         page: currentPage,
