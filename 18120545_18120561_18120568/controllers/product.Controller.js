@@ -1,6 +1,7 @@
 const productServices = require('../models/productServices');
 const cloudinary = require('../dal/cloudinary')
 const CheckoutService = require('../models/checkout.service');
+const productModel = require('../models/productModel');
 
 
 module.exports.index = async(req, res, next) => {
@@ -173,33 +174,97 @@ module.exports.listProductPagination = async(req, res, next) => {
         Query.category = Category;
     }
     if (Name) {
-        Query.name = Name;
+        const regex = new RegExp(escapeRegex(Name), 'gi');
+        Query.name = regex;
+        // productModel.find({ name: regex }, function(err, all) {
+        //         if (err) {
+        //             console.log(err);
+        //         } else {
+        //             res.render('products', {
+        //                 products: all,
+        //                 nothaveName: false
+        //             })
+        //         }
+        //     })
+
+        const pagination = await productServices.listProductPagination(Query,
+            page, productPerPage);
+        res.render('products', {
+            title: 'Products',
+            subtitle: 'List product',
+            products: pagination.docs,
+            hasNextPage: pagination.hasNextPage,
+            hasPrevPage: pagination.hasPrevPage,
+            nextPage: pagination.nextPage,
+            prevPage: pagination.prevPage,
+            lastPage: pagination.totalPages,
+            currentPage: pagination.page,
+
+            //index page
+            hasPrevPage1: (pagination.page - 2 > 0 ? true : false),
+            prevPage1: pagination.page - 2,
+            hasPrevPage2: (pagination.page - 1 > 0 ? true : false),
+            prevPage2: pagination.page - 1,
+            hasNextPage1: (pagination.page + 1 < pagination.totalPages ? true : false),
+            nextPage1: pagination.page + 1,
+            hasNextPage2: (pagination.page + 2 < pagination.totalPages ? true : false),
+            nextPage2: pagination.page + 2,
+
+            //category
+            Category: Category,
+            haveName: true,
+            Name: Name
+        })
+
+        // var options = {
+        //     project: '-created', // do not include the `created` property
+        //     filter: { likes: { $gt: 1000000 } }, // casts queries based on schema
+        //     limit: 100,
+        //     language: 'english',
+        //     lean: true
+        // }
+        // res.send('Hello');
+        // productModel.textSearch(Name, options, (err, output) => {
+        //     if (err) {
+        //         console.error(err);
+        //     } else {
+        //         const inspect = require('util').inspect;
+        //         console.log(inspect(output, { depth: null }));
+        //         res.send('Hello');
+        //     }
+        // }
+    } else {
+        const pagination = await productServices.listProductPagination(Query,
+            page, productPerPage);
+        res.render('products', {
+            title: 'Products',
+            subtitle: 'List product',
+            products: pagination.docs,
+            hasNextPage: pagination.hasNextPage,
+            hasPrevPage: pagination.hasPrevPage,
+            nextPage: pagination.nextPage,
+            prevPage: pagination.prevPage,
+            lastPage: pagination.totalPages,
+            currentPage: pagination.page,
+
+            //index page
+            hasPrevPage1: (pagination.page - 2 > 0 ? true : false),
+            prevPage1: pagination.page - 2,
+            hasPrevPage2: (pagination.page - 1 > 0 ? true : false),
+            prevPage2: pagination.page - 1,
+            hasNextPage1: (pagination.page + 1 < pagination.totalPages ? true : false),
+            nextPage1: pagination.page + 1,
+            hasNextPage2: (pagination.page + 2 < pagination.totalPages ? true : false),
+            nextPage2: pagination.page + 2,
+
+            //category
+            Category: Category,
+            haveName: false
+        })
     }
-    const pagination = await productServices.listProductPagination(Query,
-        page, productPerPage);
-    res.render('products', {
-        title: 'Products',
-        subtitle: 'List product',
-        products: pagination.docs,
-        hasNextPage: pagination.hasNextPage,
-        hasPrevPage: pagination.hasPrevPage,
-        nextPage: pagination.nextPage,
-        prevPage: pagination.prevPage,
-        lastPage: pagination.totalPages,
-        currentPage: pagination.page,
 
-        //index page
-        hasPrevPage1: (pagination.page - 2 > 0 ? true : false),
-        prevPage1: pagination.page - 2,
-        hasPrevPage2: (pagination.page - 1 > 0 ? true : false),
-        prevPage2: pagination.page - 1,
-        hasNextPage1: (pagination.page + 1 < pagination.totalPages ? true : false),
-        nextPage1: pagination.page + 1,
-        hasNextPage2: (pagination.page + 2 < pagination.totalPages ? true : false),
-        nextPage2: pagination.page + 2,
-
-        //category
-        Category: Category,
-
-    })
 }
+
+function escapeRegex(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};

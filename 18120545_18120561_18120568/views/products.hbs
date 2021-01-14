@@ -41,6 +41,65 @@
 				</tbody>
 			</table>
 			<div class="pagination">
+				{{#if haveName}}
+				{{#if hasPrevPage}}
+				{{#if Category}}
+				<a href="/products?name={{Name}}&category={{Category}}&page={{prevPage}}">&laquo;</a>
+				{{else}}
+				<a href="/products?name={{Name}}&page={{prevPage}}">&laquo;</a>
+				{{/if}}
+				{{/if}}
+
+				{{#if hasPrevPage1}}
+				{{#if Category}}
+				<a href="/products?name={{Name}}&category={{Category}}&page={{prevPage1}}">{{prevPage1}}</a>
+				{{else}}
+				<a href="/products?name={{Name}}&page={{prevPage1}}">{{prevPage1}}</a>
+				{{/if}}
+				{{/if}}
+
+				{{#if hasPrevPage2}}
+				{{#if Category}}
+				<a href="/products?name={{Name}}&category={{Category}}&page={{prevPage2}}">{{prevPage2}}</a>
+				{{else}}
+				<a href="/products?name={{Name}}&page={{prevPage2}}">{{prevPage2}}</a>
+				{{/if}}
+				{{/if}}
+
+				<a href="#" class="active">{{currentPage}}</a>
+
+				{{#if hasNextPage1}}
+				{{#if Category}}
+				<a href="/products?name={{Name}}&category={{Category}}&page={{nextPage1}}">{{nextPage1}}</a>
+				{{else}}
+				<a href="/products?name={{Name}}&page={{nextPage1}}">{{nextPage1}}</a>
+				{{/if}}
+				{{/if}}
+
+				{{#if hasNextPage2}}
+				{{#if Category}}
+				<a href="/products?name={{Name}}&category={{Category}}&page={{nextPage2}}">{{nextPage2}}</a>
+				{{else}}
+				<a href="/products?name={{Name}}&page={{nextPage2}}">{{nextPage2}}</a>
+				{{/if}}
+				{{/if}}
+
+				{{#if hasNextPage}}
+				{{#if Category}}
+				<a href="/products?name={{Name}}&category={{Category}}&page={{nextPage}}">&raquo;</a>
+				{{else}}
+				<a href="/products?name={{Name}}&page={{nextPage}}">&raquo;</a>
+				{{/if}}
+				{{/if}}
+
+
+
+				{{else}}
+
+
+
+
+
 				{{#if hasPrevPage}}
 				{{#if Category}}
 				<a href="/products?category={{Category}}&page={{prevPage}}">&laquo;</a>
@@ -88,6 +147,7 @@
 				<a href="/products?category={{Category}}&page={{nextPage}}">&raquo;</a>
 				{{else}}
 				<a href="/products?page={{nextPage}}">&raquo;</a>
+				{{/if}}
 				{{/if}}
 				{{/if}}
 			</div>

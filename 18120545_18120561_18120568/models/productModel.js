@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate-v2');
+const textSearch = require('mongoose-text-search');
 
 const slug = require("mongoose-slug-updater");
 
@@ -111,18 +112,29 @@ const productSchema = mongoose.Schema({
         type: Boolean,
         default: 0,
     },
-    cloudinary_id:{
+    cloudinary_id: {
         type: Array,
         default: [],
     }
 });
 
+// productSchema.index({
+//     name: 'text',
+//     descriptions: 'text',
+// }, {
+//     weight: {
+//         name: 5
+//     }
+// });
+
 // Add plugins
 productSchema.set("timestamps", true);
+productSchema.plugin(textSearch);
 mongoose.plugin(slug);
 
 productSchema.plugin(mongoosePaginate);
 
+productSchema.index({ tags: 'text' });
 
 const productModel = mongoose.model('products', productSchema, 'products');
 
