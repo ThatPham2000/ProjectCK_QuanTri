@@ -26,8 +26,12 @@ module.exports.getUserAdminbyID = async(id) => {
 }
 module.exports.getUserAdminbyEmail = async(email) => {
     const users = await userModel.findOne({ 'email': email });
-    if (users.roles === 'Admin') {
-        return users;
+    if (users !== null) {
+        if (users.roles === 'Admin') {
+            return users;
+        } else {
+            return null;
+        }
     } else {
         return null;
     }

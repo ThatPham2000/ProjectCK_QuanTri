@@ -5,8 +5,7 @@ const userService = require('./models/userServices')
 function initialize(passport) {
     const AuthenticateUser = async(email, password, done) => {
         const user = await userService.getUserAdminbyEmail(email);
-
-        if (user == null) {
+        if (user === null) {
             return done(null, false, { message: 'No user with that email' })
         }
         try {
